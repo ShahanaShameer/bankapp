@@ -1,0 +1,75 @@
+<button class="btn btn-warning" style="float:right;" (click)="logout()">Logout</button>
+<button class="btn btn-danger" style="float:right;" (click)="delete()">Delete</button>
+<div class="parent">
+    <div>
+       <h1> Welcome {{user}}</h1>
+       <a routerLink="/transaction">Transaction history</a>
+    </div>
+    <h4>System Date and Time:{{sdate |date:'short'}}</h4>
+    <!-- child selector -->
+        <app-delete [item]="acno" (onCancel)="onCancel()" (onDelete)="onDelete($event)" ></app-delete>
+    <div class="child" [ngClass]="acno? 'style1':''">
+        <div class="wrapper">
+            <div class="logo">
+                <img src="../../assets/images/bank.png" alt="">
+            </div>
+            <div class="text-center mt-4">
+                Deposite
+            </div>
+            <form [formGroup]="depositeForm" class="p-3 mt-3">
+            
+                <div class="form-field d-flex align-items-center">
+                    <input formControlName="acno" type="text" name="Account number" id="depo_acno" placeholder="Account number">
+                </div>
+                <div *ngIf="this.depositeForm.get('acno')?.errors && this.depositeForm.get('acno')?.touched" style="color:red ;">Invalid Account number</div>
+                <div class="form-field d-flex align-items-center">
+                    <input formControlName="pswd" type="password" name="password" id="depo_pswd" placeholder="Password">
+                </div>
+                <div *ngIf="this.depositeForm.get('pswd')?.errors && this.depositeForm.get('pswd')?.touched" style="color:red ;">Invalid Pasword</div>
+                <div class="form-field d-flex align-items-center">
+                    <input formControlName="amount" type="text" name="userName" id="depo_name" placeholder="Amount">
+                </div>
+                <div *ngIf="this.depositeForm.get('amount')?.errors && this.depositeForm.get('amount')?.touched" style="color:red ;">Invalid Data</div>
+                <button class="btn mt-3" (click)="deposite()" type="button">Deposite</button>
+        
+            </form>
+            <div class="text-center fs-5 mt-3">
+                <!-- <a href="#">Forgot password?</a> or <a href="">Signup</a> -->
+                <!-- <a routerLink="">Sign in</a> -->
+            </div>
+        
+        </div>
+    </div>
+    <div class="child" [ngClass]="acno? 'style1':''">
+        <div class="wrapper">
+            <div class="logo">
+                <img src="../../assets/images/bank.png" alt="">
+            </div>
+            <div class="text-center mt-4">
+                Withdraw
+            </div>
+            <form [formGroup]="withdrawForm" class="p-3 mt-3">
+                
+                <div class="form-field d-flex align-items-center">
+                    <input formControlName="acno" type="text" name="Account number" id="with_acno" placeholder="Account number">
+                </div>
+                <div *ngIf="this.withdrawForm.get('acno')?.errors && this.withdrawForm.get('acno')?.touched" style="color:red ;">Invalid Account number</div>
+                <div class="form-field d-flex align-items-center">
+                    <input formControlName="pswd" type="password" name="password" id="with_pswd" placeholder="Password">
+                </div>
+                <div *ngIf="this.withdrawForm.get('pswd')?.errors && this.withdrawForm.get('pswd')?.touched" style="color:red ;">Invalid Pasword</div>
+                <div class="form-field d-flex align-items-center">
+                    <input formControlName="amount" type="text" name="userName" id="with_name" placeholder="Amount">
+                </div>
+                <div *ngIf="this.withdrawForm.get('amount')?.errors && this.withdrawForm.get('amount')?.touched" style="color:red ;">Invalid Data</div>
+                <button class="btn mt-3" (click)="withdraw()" type="button">Withdraw</button>
+        
+            </form>
+            <div class="text-center fs-5 mt-3">
+                <!-- <a href="#">Forgot password?</a> or <a href="">Signup</a> -->
+                <!-- <a routerLink="">Sign in</a> -->
+            </div>
+        
+        </div>
+    </div>
+</div>

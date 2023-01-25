@@ -1,0 +1,78 @@
+                  AGULAR
+ Basic Building Blocks
+
+ 1)Module - To import 3rd party Module
+ 2)Component - To create html,CSS Vand ts files
+
+
+ Basic commands
+
+ 1)To create new project- ng new project_name
+ 2)To create new component-ng g c component
+ 3)To run angular files - ng serve --open    
+
+ Basic concept 
+
+ 1)Data binding
+ share data between components
+
+ ts->component
+ html->view
+
+ 1)one way data binding
+ data sharing only one direction(ts->html or html->ts)
+  1.1)component to view(ts->html )
+
+        a)String interpolation - {{expression}}          
+        b)property binding -[attribute_name]
+ 1.2)View to component(html->ts)
+         a)Event binding - (event_name)="function_name()"
+         b)Event binding using $event-(event_name)="function_name($event)"
+         c)Event binding using templtate referencing variable - #variable_name
+2)Two way data binding
+Data sharing in both direction(ts->html html->ts)  
+      1)ngModel binding - import formsModule in app.module.ts
+      [(ngModel)]="property_name"
+
+2)Angular Routing
+      
+      To set path for component
+      {
+            path:value,component:component_name
+      },
+      login
+      {
+            path:'',component:LoginComponent
+      },
+3) Angular Services     
+To hold redundant data
+
+To create new service- ng g s service_name
+
+4)Dependancy Injection
+To share data between two dependent classes
+
+constructor(private ds:DataService)
+5) Angular directives
+To mnipulate DOM
+a)component directives(array)
+
+b)structural directives(table)
+      ->*ngFor
+6)Angular Forms
+a)Template driven forms(first design the html template)
+b)Model driven forms(first design model in ts file)
+      1)Reactive forms
+      formGroup,array,control
+      for advanced validaton
+      import from Reactive Forms Module(in app.module.ts)
+7)Local storage
+      -setItem - To store data in localstorage
+       -getItem - To get data from localstorage
+       -removeItem - To remove data from localstorage
+8)Parent child communication
+      parent -> child communication
+      child -> parent communication
+      eg:
+      dashboard -> parent @Input
+      delete -> child        @Output
